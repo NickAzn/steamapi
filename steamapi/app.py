@@ -5,7 +5,8 @@ from .decorators import cached_property, INFINITE
 
 
 class SteamApp(SteamObject):
-    def __init__(self, appid, name=None, owner=None):
+    def __init__(self, appid, name=None, owner=None, playtime_forever=None,
+                 playtime_2weeks=None, img_logo_url=None, img_icon_url=None):
         self._id = appid
         if name is not None:
             import time
@@ -18,6 +19,10 @@ class SteamApp(SteamObject):
         # object's context, but in the object creator's context.
         self._owner = owner
         self._userid = self._owner
+        self.playtime_forever = playtime_forever
+        self.playtime_2weeks = playtime_2weeks
+        self.img_logo_url = img_logo_url
+        self.img_icon_url = img_icon_url
 
     # Factory methods
     @staticmethod
